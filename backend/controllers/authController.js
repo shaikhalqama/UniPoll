@@ -206,7 +206,7 @@ export const getMe = async (req, res) => {
             stats: {
                 created,
                 voted,
-                bookmarked: user.bookmarked.length
+                bookmarked:user.bookmarks.length
             }
         });
 
