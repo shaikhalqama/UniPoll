@@ -1,11 +1,16 @@
 import React from 'react'
+import { Routes, Route } from 'react-router-dom'
+import Layout from './components/Layout'
+import DashboardPages from './pages/DashboardPages'
 
 const App = () => {
   return (
     <div>
-      <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<DashboardPages />} />
+        </Route>
+      </Routes>
   </div>
   )
 }
