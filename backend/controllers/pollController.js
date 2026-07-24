@@ -12,12 +12,12 @@ const bookmarkSet = async (userId) => {
     const me = await User.findById(userId).select("bookmarks");
     return new Set((me?.bookmarks || []).map(String));
 };
-
+ 
 // to create poll
 export const createPoll = async (req, res) => {
     try {
-        const { questions, type, category } = req.body;
-        if (!questions || !type) {
+        const { question, type, category } = req.body;
+        if (!question || !type) {
             return res.status(400).json({ message: "Question and type are required" });
         }
 
@@ -41,7 +41,7 @@ export const createPoll = async (req, res) => {
         }
 
         const poll = await Poll.create({
-            questions,
+            question,
             type,
             category,
             options,

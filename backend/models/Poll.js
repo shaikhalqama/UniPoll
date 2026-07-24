@@ -8,7 +8,7 @@ const voteSchema = new mongoose.Schema({
         required: true
     },
     value: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Number,
         required: true
     }
 }, {
