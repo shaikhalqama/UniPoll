@@ -4,6 +4,7 @@ import Layout from './components/Layout'
 import DashboardPages from './pages/DashboardPages'
 import LoginPages from './pages/LoginPages'
 import RegisterPage from './pages/RegisterPage'
+import VerifyOtpPage from './pages/VerifyOtpPage'
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
 
    <Route path="/login" element={<LoginPages/>}/>
     <Route path="/signup" element={<RegisterPage/>}/>
+    <Route path="/verify-otp" element={<VerifyOtpPage/>}/>
         <Route element={<Layout />}>
           <Route path="/dashboard" element={<DashboardPages />} />
         </Route>
