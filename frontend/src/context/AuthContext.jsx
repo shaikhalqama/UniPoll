@@ -41,7 +41,7 @@ export function AuthProvider({ children }) {
     };
 
     // to register a user
-    const reqister = async (fromData) => (await api.post('/auth/register', fromData)).data;
+    const register = async (fromData) => (await api.post('/auth/register', fromData)).data;
 
     // to verify otp
     const verifyOtp = (payload) => api.post("/auth/verify-otp", payload);
@@ -88,7 +88,7 @@ export function AuthProvider({ children }) {
             setStats,
             loading,
             setLoading,
-            reqister,
+            register,
             verifyOtp,
             resendOtp,
             login,

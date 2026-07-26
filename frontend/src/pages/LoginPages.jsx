@@ -122,6 +122,16 @@ const LoginPages = () => {
 
         </div>
       </form>
+      <div className={s.divider}>
+        <div className={s.dividerLine}></div>
+        <span className={s.dividerText}>New to UniPoll?</span>
+        <div className={s.dividerLine}></div>
+      </div>
+
+    <Link to="/signup" className={s.signupLink}>
+      Create a free account
+    </Link>
+
     </AuthLayout>
   );
 };

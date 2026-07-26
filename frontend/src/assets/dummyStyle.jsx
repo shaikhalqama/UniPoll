@@ -1,4 +1,4 @@
-// assets/dummyStyles.js
+// assets/dummyStyle.jsx
 
 export const authLayoutStyles = {
     // Layout containers
@@ -57,7 +57,7 @@ export const authLayoutStyles = {
     subtitle: "text-zinc-400 mt-2 text-sm leading-relaxed",
 };
 
-// assets/dummyStyles.js
+// assets/dummyStyle.js
 
 export const commentsStyles = {
     // --- Comments container ---
@@ -133,7 +133,7 @@ export const connectionsStyles = {
     userUsername: "text-[11px] text-zinc-600 truncate",
 };
 
-// assets/dummyStyles.js
+// assets/dummyStyle.js
 
 export const filterBarStyles = {
     container: "flex flex-wrap items-center gap-1.5",
@@ -147,7 +147,7 @@ export const filterBarStyles = {
         "inline-flex items-center gap-1 px-2 py-1.5 rounded-xl text-xs font-medium text-zinc-700 hover:text-zinc-500 transition-colors",
 };
 
-// assets/dummyStyles.js
+// assets/dummyStyle.js
 
 export const layoutStyles = {
     // â”€â”€â”€ Containers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -218,7 +218,7 @@ export const layoutStyles = {
     bottomLinkInactive: "text-zinc-600",
 };
 
-// assets/dummyStyles.js
+// assets/dummyStyle.js
 
 export const notificationStyles = {
     // Container
@@ -249,7 +249,7 @@ export const notificationStyles = {
     pollPreview: "text-zinc-600",
 };
 
-// assets/dummyStyles.js
+// assets/dummyStyle.js
 
 export const otpStepStyles = {
     // â”€â”€â”€ Form container â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -286,7 +286,7 @@ export const otpStepStyles = {
     spinnerPath: "opacity-75",
 };
 
-// assets/dummyStyles.js
+// assets/dummyStyle.js
 
 export const pollCardStyles = {
     card: "bg-zinc-900/70 border border-zinc-800/80 rounded-2xl mb-3 overflow-hidden transition-all hover:border-zinc-700/80 hover:bg-zinc-900",
@@ -315,7 +315,7 @@ export const pollCardStyles = {
 };
 
 
-// assets/dummyStyles.js
+// assets/dummyStyle.js
 
 export const pollResultsStyles = {
     // â”€â”€â”€ ResultBar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -405,7 +405,7 @@ export const pollResultsStyles = {
         "text-[10px] font-bold text-zinc-700 uppercase tracking-widest pt-1 select-none",
 };
 
-// assets/dummyStyles.js
+// assets/dummyStyle.js
 
 export const pollVoteStyles = {
     // â”€â”€â”€ Yes/No buttons â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -781,9 +781,13 @@ export const signupStyles = {
     field: "space-y-1.5",
     label: "block text-xs font-semibold text-zinc-400 uppercase tracking-wider",
     inputWrapper: "relative",
+    input:
+        "w-full rounded-xl border border-zinc-700/80 bg-zinc-800/50 px-4 py-3 text-white placeholder:text-zinc-600 outline-none transition-all focus:border-emerald-500/60 focus:ring-2 focus:ring-emerald-500/12 text-sm",
     inputWithPrefix: "pl-8",
     inputWithSuffix: "pr-11",
+    inputWithIcon: "pr-11",
     prefix: "absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 text-sm font-medium select-none",
+    icon: "absolute right-3.5 top-1/2 -translate-y-1/2 text-zinc-600 pointer-events-none",
     toggleButton:
         "absolute right-4 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-zinc-300 transition-colors",
 
@@ -795,6 +799,19 @@ export const signupStyles = {
     strengthStrong: "bg-emerald-500",
     strengthVeryStrong: "bg-emerald-400",
     strengthInactive: "bg-zinc-700",
+
+    // Submit button
+    submitButton:
+        "w-full inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold bg-emerald-500 text-white hover:bg-emerald-400 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none transition-all shadow-lg shadow-emerald-500/25",
+
+    // Divider
+    divider: "flex items-center gap-3 mt-5 mb-4",
+    dividerLine: "flex-1 h-px bg-zinc-800",
+    dividerText: "text-zinc-700 text-[11px]",
+
+    // Signup link
+    signupLink:
+        "flex items-center justify-center w-full rounded-xl border border-zinc-700/70 bg-zinc-800/40 hover:bg-zinc-800 text-zinc-400 hover:text-white px-4 py-3 text-sm font-semibold transition-all",
 
     // Footer links
     footerText: "mt-6 text-center text-sm text-zinc-500",
