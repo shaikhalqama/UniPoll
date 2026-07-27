@@ -8,7 +8,7 @@ export const useAuth = () => useContext(AuthContext);
 export function AuthProvider({ children }) {
 
     const [user, setUser] = useState(null);
-    const [stats, setStats] = useState({ created: 0, voted: 0, Bookmark: 0 });
+    const [stats, setStats] = useState({ created: 0, voted: 0, bookmarked: 0 });
     const [loading, setLoading] = useState(true);
 
     // to load user profile

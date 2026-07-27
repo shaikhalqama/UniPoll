@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import { layoutStyles as s } from '../assets/dummyStyle';
-import { NavLink, useNavigate, useSearchParams } from 'react-router-dom';
-import { Bookmark, CheckCircle2, LayoutGrid, PenLine, Plus, PlusSquare, Search, X } from 'lucide-react';
+import { NavLink, Outlet, useNavigate, useSearchParams } from 'react-router-dom';
+import { Bookmark, CheckCircle2, LayoutGrid, LogOut, PenLine, Plus, PlusSquare, Search, Settings, Sidebar, X } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useRef } from 'react';
 import useClickOutside from '../hooks/useClickOutside';
 import NotificationBell from './NotificationBell';
+import SideBar from './Sidebar'; 
+import { Avatar } from './UIElements';
 
 
 const NAV = [
@@ -66,10 +68,77 @@ const Layout = () => {
                             <NotificationBell />
 
                              {/* avatar */}
-                             
+                             <div ref={userRef} className={s.avatarWrapper}>
+                                <Avatar user={user || {}} className={s.avatarClass}/>
+                             </div>
                     </div>
                 </div>
+
+                {/* mobile expanded search */}
+                {mobileSearch && (
+                    <div className={s.mobileSearchContainer}>
+                        <div className={s.mobileSearchInner}>
+                            <Search size={14} className={s.searchIcon} />
+                            <input autoFocus value={q} onChange={(e) =>
+                                navigate(`/dashboard?q=${encodeURIComponent(e.target.value)}` ,
+                                {replace: true})
+                            } placeholder='Search polls'
+                            className={s.mobileSearchInput}/>
+                        </div>
+                    </div>
+                )}
             </header>
+            {/* body*/}
+            <div className={s.bodyContainer}>
+               <aside className={s.leftSidebar}>
+                <p className={s.menuLabel}> Menu </p>
+                <nav className={s.navContainer}>
+                  {NAV.map(({to, label, Icon})=> (
+                    <NavLink key={to} to={to} className={({isActive}) => 
+                      `${s.sideLinkBase} ${isActive ? s.sideLinkActive : s.sideLinkInactive}`
+                    }>
+                      <Icon size={16} className='shrink-0'/>
+                      {label}
+                    </NavLink>
+                  ))}
+                </nav>
+                <div className={s.sidebarBottom}>
+                    <NavLink to='/settings' className={({isActive}) => 
+                      `${s.sideLinkBase} ${isActive ? s.sideLinkActive : s.sideLinkInactive}`}
+                      >
+                        <Settings size={16} className='shrink-0'/>
+                        Settings
+                    </NavLink>
+                    <button onClick={() => { logout();
+                        navigate('/login');
+                    }} className={s.logoutButton}>
+                        <LogOut size={16} className='shrink-0'/> Log out
+                    </button>
+                </div>
+               </aside>
+               {/* main content */}
+               <main className={s.mainContent}>
+                 <Outlet />
+               </main>
+               
+               <aside className={s.rightRail}>
+                 <SideBar />
+               </aside>
+            </div>
+
+           <nav className={s.bottomNav}>
+            {NAV.map(({to, label, Icon}) => (
+              <NavLink key={to} to={to} className={({isActive}) => 
+                `${s.sideLinkBase} ${isActive ? s.bottomLinkActive : s.bottomLinkInactive}`
+              }>
+                <Icon size={20} />
+                <span>
+                  {label.split(" ")[0]}
+                </span>
+              </NavLink>
+            ))}
+            </nav>
+
         </div>
     )
 }
