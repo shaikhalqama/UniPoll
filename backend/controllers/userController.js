@@ -64,7 +64,7 @@ export const toggleFollow = async (req, res) => {
             return res.status(400).json({ message: "You cannot follow yourself" });
         }
         
-        const me = await User.findById(req.userId).Select("following");
+        const me = await User.findById(req.userId).select("following");
         const already = me.following.some(
             (id) => String(id) === String(target._id)
         );
@@ -72,7 +72,7 @@ export const toggleFollow = async (req, res) => {
         else me.following.push(target._id);
         await me.save();
 
-        const followers = await User.countDocument({following: target._id})
+        const followers = await User.countDocuments({following: target._id})
         res.json({ following: !already, followers });
     } catch (error) {
         res.status(500).json({ message: error.message });

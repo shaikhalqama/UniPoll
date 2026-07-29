@@ -15,6 +15,8 @@ import { Link } from 'react-router-dom'
 import { Button } from './components/UIElements'
 import SettingsPage from './pages/SettingsPage'
 import SinglePollPage from './pages/SinglePollPage'
+import UserProfilePage from './pages/UserProfilePage'
+import AnalyticsPage from './pages/AnalyticsPage'
 
 // protect route
 function ProtectedRoute({ children }) {
@@ -42,7 +44,9 @@ const App = () => {
           <Route path="/create-poll" element={<CreatePollPage />} />
           <Route path="/settings" element={<SettingsPage />} />
 
-          <Route path="/poll/:id" element={<SinglePollPage/>}/>
+          <Route path="/poll/:id" element={<SinglePollPage />}/>
+          <Route path="/user/:username" element={<UserProfilePage />}/>
+          <Route path="/poll/:id/analytics" element={<AnalyticsPage />}/>
           
 
           <Route path="/my-polls" element={<PollListPage title="My Polls" path="/polls/mine" owner={true} emptyTitle="No polls yet." emptyText="You haven't created any polls yet."/>} />
@@ -61,6 +65,9 @@ const App = () => {
            }
            />} />
         </Route>
+
+
+        <Route path="*" element={<Navigate to='/dashboard' replace />} />
       </Routes>
   </div>
   )

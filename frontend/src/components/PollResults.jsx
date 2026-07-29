@@ -156,7 +156,7 @@ export default function PollResults({ poll, onUnvote }) {
     return (
       <div className={s.openContainer}>
         <p className={s.openHeader}>{poll.totalVotes} responses</p>
-        {poll.results.slice(0, 6).map((r, i) => (
+        {poll.results.map((r, i) => (
           <div key={i} className={s.openResponse}>
             "{r.text}"
           </div>

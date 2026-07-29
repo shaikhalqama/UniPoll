@@ -7,7 +7,7 @@ const userRouter = express.Router();
 userRouter.use(protect);
 
 userRouter.get("/:username/connections", getConnections);
-userRouter.post("/:username", getPubicProfile);
+userRouter.get("/:username", getPubicProfile);
 
 userRouter.post("/:username/follow", toggleFollow);
 
