@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // to create a single instance of axios
 const api = axios.create({
-    baseURL: "http://localhost:5000/api",
+    baseURL: import.meta.env.PROD ? '/api' : 'http://localhost:5000/api',
 });
 
 // to attach jwt token to any request

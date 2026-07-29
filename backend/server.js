@@ -1,12 +1,18 @@
 import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { connectDB } from './config/db.js';
 import authRouter from './routes/authRoutes.js';
 import notificationRouter from './routes/notificationRoutes.js';
 import pollRouter from './routes/pollRoutes.js';
 import commentRouter from './routes/commentRoutes.js';
 import userRouter from './routes/userRoutes.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const PORT = process.env.PORT || 5000;
 const app = express();
 
@@ -25,8 +31,12 @@ app.use('/api/comments', commentRouter);
 app.use('/api/users', userRouter);
 app.use('/api/notifications', notificationRouter);
 
-app.get('/', (req, res) => {
-  res.send('backend server is running');
+// Serve static files from frontend build
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
+
+// Serve frontend for all non-API routes (SPA routing)
+app.get(/^(?!\/api).*/, (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
 });
 
 app.listen(PORT, () => {
