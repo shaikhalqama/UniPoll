@@ -102,22 +102,21 @@ export const getVotedPolls = async (req, res) => {
 // the polls i bookmarked on (GET)
 export const getBookmarks = async (req, res) => {
     try {
-        const me = await User.findById(req.user).populate({
+        const me = await User.findById(req.userId).populate({
             path: "bookmarks",
             populate: {
                 path: "creator",
                 select: "name username avatar"
             }
         });
-        res.json(me.bookmarks);
 
-        const set = new Set((me?.bookmarks || []).map((p) => String()));
+        const set = new Set((me?.bookmarks || []).map((p) => String(p._id)));
         const shaped = (me?.bookmarks || []).map((p) => shapePoll(p, req.userId, set));
         res.json(await withCounts(shaped));
 
 
     } catch (error) {
-        res.status(500).json({ message: err.message });
+        res.status(500).json({ message: error.message });
     }
 };
 

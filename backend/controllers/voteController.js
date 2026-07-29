@@ -112,7 +112,8 @@ export const deletePoll = async (req, res) => {
     if (!ownerGuard(poll, req.userId)) return res.status(403).json({ message: "Not your poll" });
     
     await Comment.deleteMany({ poll: poll._id });
-    await Poll.deleteOne();
+    await User.updateMany({}, { $pull: { bookmarks: poll._id } });
+    await Poll.deleteOne({ _id: poll._id });
 
     res.json({ message: "Poll deleted" });
   } catch (err) {

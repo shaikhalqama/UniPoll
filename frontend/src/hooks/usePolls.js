@@ -95,7 +95,7 @@ export default function usePolls(path){
     };
 
     const remove = async(id) => {
-        await api.get(`/polls/${id}`);
+        await api.delete(`/polls/${id}`);
          setPolls((arr) => arr.filter((x) => x._id !== id));
          toast("Poll deleted");
          refresh();

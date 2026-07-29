@@ -68,7 +68,7 @@ export function AuthProvider({ children }) {
         setUser(data.user);
     };
 
-    const ChangePassword = (payload) => api.patch("/auth/cpassword", payload);
+    const changePassword = (payload) => api.patch("/auth/password", payload);
     const logout = () => {
         localStorage.removeItem("token");
         setUser(null);
@@ -96,7 +96,7 @@ export function AuthProvider({ children }) {
             verifyResetOtp,
             resetPassword,
             updateProfile,
-            ChangePassword,
+            changePassword,
             logout,
             refresh: loadMe,
         }}>
