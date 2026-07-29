@@ -57,6 +57,8 @@ export default function usePolls(path){
     
     // to bookmark a poll
     const bookmark = async (id) => {
+        const currentPoll = polls.find((x) => x._id === id);
+        const wasBookmarked = currentPoll?.isBookmarked;
         
         await api.post(`/polls/${id}/bookmark`);
         const {data} = await api.get(`/polls/${id}?noview=true`); // refetch to get results
@@ -68,7 +70,7 @@ export default function usePolls(path){
             }
         ) : x));
 
-        toast(data.bookmarked ? "Saved" : "Removed from saved");
+        toast(!wasBookmarked ? "Saved" : "Removed from saved");
         refresh();
        
     }

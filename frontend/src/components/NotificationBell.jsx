@@ -3,6 +3,7 @@ import { notificationStyles as s } from '../assets/dummyStyle';
 import useClickOutside from '../hooks/useClickOutside';
 import api from '../utils/api';
 import { Bell } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 
 const verb = (t) =>

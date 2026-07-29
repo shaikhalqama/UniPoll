@@ -153,17 +153,25 @@ export default function Comments({ pollId }) {
       const { data } = await api.post(`/comments/${pollId}`, { text });
       setList((l) => [data, ...l]);
       setText("");
+      toast("Comment added");
+    } catch (error) {
+      toast(error.response?.data?.message || "Failed to add comment");
     } finally {
       setBusy(false);
     }
   };
 
   const reply = async (parent, body) => {
-    const { data } = await api.post(`/comments/${pollId}`, {
-      text: body,
-      parent,
-    });
-    setList((l) => [...l, data]);
+    try {
+      const { data } = await api.post(`/comments/${pollId}`, {
+        text: body,
+        parent,
+      });
+      setList((l) => [...l, data]);
+      toast("Reply added");
+    } catch (error) {
+      toast(error.response?.data?.message || "Failed to add reply");
+    }
   };
 
   const remove = async (id) => {

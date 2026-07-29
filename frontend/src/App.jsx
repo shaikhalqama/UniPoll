@@ -8,7 +8,11 @@ import VerifyOtpPage from './pages/VerifyOtpPage'
 import ForgotPasswordPage from './pages/ForgotPasswordPage'
 import { useAuth } from './context/AuthContext'
 import { appStyles as s } from './assets/dummyStyle'
-import { Loader2 } from 'lucide-react'
+import { Bookmark, CheckCircle2, Loader2 } from 'lucide-react'
+import CreatePollPage from './pages/CreatePollPage'
+import PollListPage from './pages/PollListPage'
+import { Link } from 'react-router-dom'
+import { Button } from './components/UIElements'
 
 // protect route
 function ProtectedRoute({ children }) {
@@ -22,7 +26,7 @@ function ProtectedRoute({ children }) {
 }
 const App = () => {
   return (
-    <div>
+    <div className={s.root} style={s.rootStyle}>
       <Routes>
         <Route path="/login" element={<LoginPages/>}/>
         <Route path="/signup" element={<RegisterPage/>}/>
@@ -33,10 +37,26 @@ const App = () => {
           <Layout />
         </ProtectedRoute>}>
           <Route path="/dashboard" element={<DashboardPages />} />
+          <Route path="/create-poll" element={<CreatePollPage />} />
+          <Route path="/my-polls" element={<PollListPage title="My Polls" path="/polls/mine" emptyTitle="No polls yet." emptyText="You haven't created any polls yet."/>} />
+
+          <Route path="/voted-polls" element={<PollListPage title="Voted Polls" path="/polls/voted"
+           Icon={CheckCircle2} emptyTitle="No votes yet." emptyText="You haven't voted onany polls yet."/>} />
+
+           <Route path="/bookmarked-polls" element={<PollListPage title="Saved" path="/polls/bookmarks" 
+           Icon={Bookmark} emptyTitle="No saved polls yet." emptyText="Save Polls you want to revisit later."
+           action={
+            <Link to="/dashboard">
+              <Button className="mt-4">
+                Explore Polls
+              </Button>
+            </Link>
+           }
+           />} />
         </Route>
       </Routes>
   </div>
   )
 }
 
-export default App
+export default App;

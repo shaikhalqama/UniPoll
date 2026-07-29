@@ -4,6 +4,7 @@ import PollResults from "./PollResults.jsx";
 import { inputCls } from "./UIElements.jsx";
 import { pollVoteStyles as s } from "../assets/dummyStyle";
 
+
 export default function PollVote({ poll, onVote, onUnvote }) {
   const [sel, setSel] = useState(null);
   const [hover, setHover] = useState(0);
